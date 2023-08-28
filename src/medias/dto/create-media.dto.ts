@@ -1,1 +1,4 @@
-export class CreateMediaDto {}
+export class CreateMediaDto {
+    title: string
+    username: string
+}
