@@ -4,7 +4,7 @@ import { UpdatePostDto } from './dto/update-post.dto';
 import { PostRepository } from './posts.repository';
 
 @Injectable()
-export class PostsService {
+export class PostsService  {
   constructor(private readonly repository: PostRepository) { }
 
   async create(data: CreatePostDto) {

@@ -7,6 +7,8 @@ import { mediasRepository } from './medias.repository';
 @Module({
   controllers: [MediasController],
   providers: [MediasService,mediasRepository],
-  imports:[PrismaModule]
+  imports:[PrismaModule],
+  exports: [MediasService]
+  
 })
 export class MediasModule {}

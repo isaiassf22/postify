@@ -20,8 +20,21 @@ export class mediasRepository {
        return await this.prisma.medias.findMany()
     }
 
+    async verify(data: CreateMediaDto){
+        const {title,username}= data
+         return await this.prisma.medias.findFirst({
+            where: {
+                title,
+                username
+            }
+         })
+    }
+
    async findOne(id: number) {
-        return await this.prisma.medias.findMany()
+        return await this.prisma.medias.findFirst({
+            where:{id}
+        }
+        )
     }
 
     async update(id: number, data: UpdateMediaDto) {

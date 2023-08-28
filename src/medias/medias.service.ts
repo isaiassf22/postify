@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateMediaDto } from './dto/create-media.dto';
 import { UpdateMediaDto } from './dto/update-media.dto';
 import { mediasRepository } from './medias.repository';
@@ -9,6 +9,11 @@ export class MediasService {
   constructor(private readonly repository: mediasRepository) { }
 
   async create(data: CreateMediaDto) {
+    
+    const check = await this.repository.verify(data)
+    if(check){
+      throw new HttpException('postagem ja exite para este usuario',HttpStatus.CONFLICT)
+    }
     return await this.repository.create(data)
   }
 

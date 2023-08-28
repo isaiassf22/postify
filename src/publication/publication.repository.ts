@@ -11,6 +11,7 @@ import { UpdatePublicationDto } from "./dto/update-publication.dto";
         await this.prisma.publications.create({
             data
         })
+        return "created!"
     }
 
    async findAll() {
